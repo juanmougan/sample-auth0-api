@@ -8,7 +8,8 @@ class JsonWebToken
         algorithm: 'RS256',                          # RS256 or HS256
         iss: 'https://YOUR_AUTH0_TENANT_DOMAIN/',    # something like 000.eu.auth0.com
         verify_iss: true,
-        aud: Rails.application.secrets.auth0_api_audience,
+        #aud: Rails.application.secrets.auth0_api_audience,
+        aud: Rails.application.credentials[:auth0][:api_audience], ## No staging namespace
         verify_aud: true) do |header|
       jwks_hash[header['kid']]
     end
