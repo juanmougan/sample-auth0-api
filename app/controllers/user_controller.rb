@@ -1,6 +1,13 @@
 class UserController < ApplicationController
   include Secured # So this is private
-  def user
-    render json: { message: 'This is PRIVATE! You need to be authenticated to see this.' }
+  
+  @users = [
+    {"name": "Juan Manuel Mougan", "email": "juan@mymail.com", "is_admin": true},
+    {"name": "Jeff Bezos", "email": "jeff@amazon.com", "is_admin": false},
+    {"name": "Bill Gates", "email": "bill@microsoft.com", "is_admin": false}
+  ]
+  
+  def list
+    render json: @users
   end
 end
